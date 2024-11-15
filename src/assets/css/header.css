@@ -1,0 +1,124 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    gap: 20px;
+    width: 100%;
+}
+
+header div{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 30px;
+}
+
+header div ul,
+header div ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header div ul{
+    gap: 30px;
+}
+
+header div ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+
+/**
+ *
+ * Menu
+ *
+ */
+
+.menu{
+    width: 400px;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    right: -200%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #093F43E5;
+    padding: 15px;
+    transition: ease-in-out cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+.menu .box1{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.menu .box1 .infos{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.menu .box1 .infos .infosConnexion{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+}
+
+.menu .box1 .infos .infosConnexion h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.menu .box1 .infos .infosConnexion button{
+    color: white;
+    background-color: #00ACB7;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0px;
+    font-weight: 700;
+}
+
+.menu .box2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.menu .box2 .col1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: #051819;
+    color: white;
+    border-radius: 15px;
+}
+
+.menu .box2 hr{
+    width: 100%;
+}
+
+.menu .box2 .col2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;   
+}

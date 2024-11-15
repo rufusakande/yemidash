@@ -1,0 +1,79 @@
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+}
+
+section .description{
+    margin: 45px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+}
+
+section .description h1{
+    font-size: clamp(40px, 55px, 70px);
+    font-weight: 800;
+    line-height: 110px;
+}
+
+section .description p{
+    font-weight: 600;
+    line-height: 33px;
+    font-size: 20px;
+
+}
+
+section .btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 110px;
+    width: 300px;
+    position: relative;
+    left: -18%;
+}
+
+section .btnContainer .box2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 100px;
+}
+
+section .btnContainer .btn1,
+section .btnContainer .btn2{
+    padding: 12px 15px;
+    background-color: #00ACB7;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    transition: ease-in-out 1s;
+}
+
+section .btnContainer .btn1:hover,
+section .btnContainer .btn2:hover{
+    transform: rotateX(25deg);
+    border-bottom: 2px solid white;
+    transition: ease-in-out 1s;
+}
+
+section .btnContainer .btn2:hover{
+    background-color: #00ACB7;
+    transition: ease-in-out 1s;
+}
+
+section .btnContainer .btn1:hover{
+    background-color: #00abb77a;
+    transition: ease-in-out 1s;
+}
+
+section .btnContainer .btn2{
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0);
+}

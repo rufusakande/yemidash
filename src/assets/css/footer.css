@@ -1,0 +1,19 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.mode{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode p{
+    width: fit-content;
+}
