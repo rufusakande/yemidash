@@ -1,4 +1,4 @@
-name: JE SUIS YEMI
+name: Build Tauri App
 
 on:
   push:
@@ -12,12 +12,20 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: windows-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            windows-node-
 
       - name: Install dependencies
         run: yarn install
@@ -31,16 +39,16 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Add Rust to PATH
-        run: echo "${HOME}/.cargo/bin" >> $GITHUB_PATH
+      - name: Setup Rust for Windows
+        run: rustup target add x86_64-pc-windows-msvc
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli
 
-      - name: Build Tauri App for Windows
+      - name: Build Tauri App
         run: yarn tauri build
 
-      - name: Upload Windows Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: windows-build
@@ -51,15 +59,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: linux-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            linux-node-
+
       - name: Install Linux dependencies
-        run: sudo apt-get install -y libgtk-3-dev build-essential
+        run: sudo apt-get update && sudo apt-get install -y libgtk-3-dev build-essential curl
 
       - name: Install dependencies
         run: yarn install
@@ -73,16 +89,13 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Add Rust to PATH
-        run: echo "${HOME}/.cargo/bin" >> $GITHUB_PATH
-
       - name: Install Tauri CLI
         run: cargo install tauri-cli
 
-      - name: Build Tauri App for Linux
+      - name: Build Tauri App
         run: yarn tauri build
 
-      - name: Upload Linux Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: linux-build
@@ -93,12 +106,23 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: macos-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            macos-node-
+
+      - name: Install macOS dependencies
+        run: brew install gtk+3
 
       - name: Install dependencies
         run: yarn install
@@ -112,16 +136,13 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Add Rust to PATH
-        run: echo "${HOME}/.cargo/bin" >> $GITHUB_PATH
-
       - name: Install Tauri CLI
         run: cargo install tauri-cli
 
-      - name: Build Tauri App for macOS
+      - name: Build Tauri App
         run: yarn tauri build
 
-      - name: Upload macOS Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: macos-build
